@@ -1,6 +1,7 @@
 #include <iostream>
 #include <windows.h>
-
+#include <cstdlib>
+#include <cmath>
 // a simple console app using the implementation of Neville's Algorithm
 using namespace std;
 
@@ -16,18 +17,24 @@ class al_Nevilles
     {
         for (int i = n-1; i >= j ; i--)
         {
-
+            k++;
+            int m;
+            m = n-k;
+            int l = abs(m-i);
+ 
             y[i]=(( (T-x[i-j]) * y[i] - (T-x[i]) * y[i-1] ) / (x[i] - x[i-j]));
-            cout << "p(" << j-1 << "," << i << ") " << y[i] << endl;
+            cout << "p(" << m << "," << l << ") " << y[i] << endl;
 
         }
-
+        cout << "End of the column" << endl;
+        cout << " " << endl;
+   
+    }
     final_result = y[n-1];
 
-    cout << "The final result of the column " << wynik << endl;
+    cout << "The final result " << final_result << endl;
     cout << " " << endl;
-    }
-
+    system("pause");
 }
 
 
@@ -36,6 +43,7 @@ class al_Nevilles
 
 int main()
 {
+    menu:
     al_Nevilles algo;
     int choice;
     cout << "Make your own set of data [1] or pick one of the following [2]" << endl;
@@ -107,7 +115,8 @@ int main()
             }
 
         }
-
+    system("cls");
+    goto menu;
     return 0;
 }
 
